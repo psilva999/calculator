@@ -1,0 +1,24 @@
+@import 'config';
+
+*, *:before, *:after {
+  margin:0;
+  border:0;
+  padding:0;
+  border-spacing:0;
+  box-sizing:border-box;
+}
+
+html, body {
+  overflow-x:hidden;
+}
+
+body {
+  font-family:$apple;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  display:grid;
+  place-items:center;
+  min-width:100vw;
+  min-height:100vh;
+}
