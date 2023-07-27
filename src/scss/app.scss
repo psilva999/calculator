@@ -21,4 +21,20 @@ body {
   place-items:center;
   min-width:100vw;
   min-height:100vh;
+
+  code {
+    font-family:$pro;
+  }
+
+  ul {
+    display:flex;
+  }
+
+  li {
+    list-style:none;
+  }
+
+  a {
+    text-decoration:none;
+  }
 }
