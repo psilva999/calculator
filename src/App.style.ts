@@ -53,11 +53,12 @@ export const Switch = styled.nav`
   place-items:center;
 
   ul {
-    width:80%;
+    width:70%;
     font-size:.65rem;
     font-weight:200;
     justify-content:space-between;
     margin:0 auto;
+    opacity:.6;
   }
 `
 

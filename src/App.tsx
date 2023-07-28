@@ -20,9 +20,33 @@ import {
 
 function App() {
 
+  const [value, setValue] = useState(''),
+        [theme, setTheme] = useState(1),
+        [themeValue, setThemeValue] = useState('8%')
+
+  const handleTheme = () => {
+    if (theme === 1) {
+      setTheme(2)
+      setThemeValue('38%')
+    }
+
+    else if (theme === 2) {
+      setTheme(3)
+      setThemeValue('70%')
+    }
+
+    else {
+      setTheme(1)
+      setThemeValue('8%')
+    }
+  }
+
   return (
     <Container>
-      { <GlobalStyleDark/> }
+
+      { theme === 1 && <GlobalStyleDark/> }
+      { theme === 2 && <GlobalStyleWhite/> }
+      { theme === 3 && <GlobalStylePurple/> }
 
       <Header> <h1>Calc</h1>
 
@@ -36,8 +60,8 @@ function App() {
               <li>3</li>
             </ul>
 
-            <SwitcherContainer>
-              <Switcher/>
+            <SwitcherContainer onClick={ handleTheme }>
+              <Switcher theme={ themeValue }/>
             </SwitcherContainer>
           </Switch>
 
@@ -83,8 +107,8 @@ function App() {
           gc='3/5' 
           ga='5 / 1 / 6 / 3'
           color='var(--white)'
-          bg='var(--key-background-red)'
-          bdbox='var(--key-shadow-dark-red)'>
+          bg='var(--key-background-dark-blue)'
+          bdbox='var(--key-shadow-dark-blue)'>
           RESET
         </Button>
 
