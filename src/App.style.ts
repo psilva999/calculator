@@ -4,6 +4,7 @@ type Props = {
   color?: string;
   bg?: string;
   bdbox?: string;
+
   gc?: string; 
   ga?: string;
 }
@@ -12,8 +13,12 @@ type Theme = {
   theme: string;
 } 
 
+type FontSize = {
+  fs?: string
+}
+
 export const Container = styled.main`
-  min-width:${ 400 / 16 }rem;
+  width:${ 400 / 16 }rem;
   margin:0 auto;
   user-select:none;
 
@@ -84,11 +89,14 @@ export const Switcher = styled.div<Theme>`
   transition:all .1s linear;
 `
 
-export const Input = styled.p`
+export const Input = styled.p<FontSize>`
   width:100%;
   height:${79 / 16}rem;
-  padding:${ 21 / 16 }rem;
-  font-size:1.5rem;
+  padding:1.7rem 1rem;
+  overflow:hidden;
+  font-size:
+    ${ props => props.fs? props.fs : '1.6rem' };
+
   color:var(--white-text);
   background:var(--screen-background);
   text-align:right;
