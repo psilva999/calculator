@@ -1,13 +1,24 @@
 import styled, { createGlobalStyle } from "styled-components"
 
+type Props = {
+  color?: string;
+  bg?: string;
+  bdbox?: string;
+  gc?: string; 
+  ga?: string;
+}
+
+type Theme = {
+  theme: string;
+} 
+
 export const Container = styled.main`
-  max-width:${500 / 16}rem;
-  min-width:${280 / 16}rem;
+  min-width:${ 400 / 16 }rem;
   margin:0 auto;
   user-select:none;
 
-  @media screen and (min-width:${450 / 16}rem) {
-    min-width:${340 / 16}rem;
+  @media screen and (max-width:${460 / 16}rem) {
+    min-width:95vw;
   }
 `
 
@@ -47,5 +58,82 @@ export const Switch = styled.nav`
     font-weight:200;
     justify-content:space-between;
     margin:0 auto;
+  }
+`
+
+export const SwitcherContainer = styled.div`
+  background:var(--toggle-background);
+  width:100%;
+  min-height:${17 / 16}rem;
+  border-radius:2rem;
+  position:relative;
+  z-index:5;
+  cursor:pointer;
+`
+
+export const Switcher = styled.div<Theme>`
+  width:${11 / 16}rem;
+  height:${11 / 16}rem;
+  min-height:${11 / 16}rem;
+  background:var(--key-background-red);
+  border-radius:100%;
+  position:absolute;
+  left:${(props) => props.theme};
+  top:21%;
+  transition:all .1s linear;
+`
+
+export const Input = styled.p`
+  width:100%;
+  height:${79 / 16}rem;
+  padding:${ 21 / 16 }rem;
+  font-size:1.5rem;
+  color:var(--white-text);
+  background:var(--screen-background);
+  text-align:right;
+  margin-top:1.3rem;
+  border-radius:.5rem;
+`
+
+export const ButtonContainer = styled.section`
+  width:100%;
+  padding:15px 10px;
+  background:var(--toggle-background);
+  min-height:${330 / 16}rem;
+  border-radius:.5rem;
+  display: grid;
+  grid-template-columns:repeat(4, 1fr);
+  grid-template-rows:repeat(4, 1fr);
+  gap:14px 12px;
+  margin-top:1rem;
+`
+
+export const Button = styled(Flex)<Props>`
+  border-radius:.3rem;
+  padding:10px;
+  font-size:1.2rem;
+  opacity:.8;
+  cursor:pointer;
+  max-width:${ props => props.gc? '100%' : '85px'};
+  height:${ 56 / 16 }rem;
+  grid-column:${ props => props.gc? props.gc : 'auto' };
+  grid-area:${ props => props.gc? props.ga : 'auto' };
+  
+  background:${ props => 
+    props.bg ? props.bg : 'var(--key-background-orange)' };
+
+  color:${ props => 
+    props.color ? props.color : 'var(--very-dark-grayish-blue)' };
+
+  box-shadow:0 3px 0 
+    ${ props => props.bdbox ? props.bdbox : 'var(--key-shadow-orange)' };
+
+
+  &, &:hover {
+    transition:.2s;
+  }
+
+  &:hover {
+    opacity:1;
   }
 `
