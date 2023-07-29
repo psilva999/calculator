@@ -44,11 +44,23 @@ function App() {
 
   const handleNumber = (item:number) => {
     handleFontSize()
-    setValue(`${ value }${ item }`)
+    setValue(`${value}${item}`)
   }
 
+  const addSymbol = (symbol: string) => {
+    handleFontSize()
 
-  const handleTheme = () => {
+    if (value.slice(-1) !== ' ' && value.slice(-1) !== '.') 
+      setValue(`${value}${symbol}`)
+  }
+
+  const calc = () => {
+    if (value.length >= 5 && value.slice(-1) !== ' ')
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+      setValue(eval(value).toString())
+  }
+
+  function handleTheme(): void {
     if (theme === 1) {
       setTheme(2)
       setThemeValue('38%')
@@ -99,7 +111,12 @@ function App() {
         <Button onClick={ () => handleNumber(8) }>8</Button>
         <Button onClick={ () => handleNumber(9) }>9</Button>
 
-        <Button onClick={ () => value.length >= 1 && deleteValue() }>
+        <Button 
+          onClick={ () => value.length >= 1 && deleteValue() }
+          color='var(--white)'
+          bg='var(--key-background-dark-blue)'
+          bdbox='var(--key-shadow-dark-blue)'>
+
           DEL
         </Button>
 
@@ -107,7 +124,7 @@ function App() {
         <Button onClick={ () => handleNumber(5) }>5</Button>
         <Button onClick={ () => handleNumber(6) }>6</Button>
 
-        <Button onClick={ () => setValue(`${ value }+`) }>
+        <Button onClick={ () => value.length >= 1 && addSymbol(' + ') }>
           +
         </Button>
 
@@ -115,19 +132,30 @@ function App() {
         <Button onClick={ () => handleNumber(2) }>2</Button>
         <Button onClick={ () => handleNumber(3) }>3</Button>
 
-        <Button onClick={ () => setValue(`${ value }-`) }>
+        <Button onClick={ () => value.length >= 1 && addSymbol(' - ') }>
           -
         </Button>
 
-        <Button onClick={ () => setValue(`${ value }.`) }>.</Button>
-        <Button onClick={ () => handleNumber(0) }>0</Button>
-        <Button onClick={ () => setValue(`${ value }/`) }>/</Button>
+        <Button onClick={ () => value.length >= 1 && addSymbol('.') }>
+          .
+        </Button>
 
-        <Button onClick={ () => setValue(`${ value }x`) }>
+        <Button onClick={ () => handleNumber(0) }>0</Button>
+
+        <Button onClick={ () => value.length >= 1 && addSymbol(' / ') }>
+          /
+        </Button>
+
+        <Button onClick={ () => value.length >= 1 && addSymbol(' * ') }>
           x
         </Button>
 
         <Button 
+          onClick={() => { 
+            setValue('') 
+            setFontSize(false)
+          }}
+
           gc='3/5' 
           ga='5 / 1 / 6 / 3'
           color='var(--white)'
@@ -137,6 +165,7 @@ function App() {
         </Button>
 
         <Button 
+          onClick={ calc }
           gc='3/5' 
           ga='5 / 3 / 6 / 5'
           color='var(--white)'
