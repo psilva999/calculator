@@ -21,6 +21,21 @@ body {
   place-items:center;
   min-width:100vw;
   min-height:100vh;
+  scrollbar-width:thin;
+  scrollbar-color:#7c6a6a;
+
+  &::-webkit-scrollbar {
+    width:.43rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background:#E6E6E6;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background:#306B34;
+    border:.375rem solid #306B34;
+  }
 
   code {
     font-family:$pro;
@@ -36,5 +51,11 @@ body {
 
   a {
     text-decoration:none;
+  }
+}
+
+@media (max-height:550px) {
+  body {
+    padding-top:1rem;
   }
 }

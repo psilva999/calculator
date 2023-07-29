@@ -22,8 +22,8 @@ export const Container = styled.main`
   margin:0 auto;
   user-select:none;
 
-  @media screen and (max-width:${460 / 16}rem) {
-    min-width:95vw;
+  @media screen and (max-width:${420 / 16}rem) {
+    width:95vw;
   }
 `
 
@@ -85,7 +85,7 @@ export const Switcher = styled.div<Theme>`
   border-radius:100%;
   position:absolute;
   left:${(props) => props.theme};
-  top:21%;
+  top:19%;
   transition:all .1s linear;
 `
 
@@ -115,6 +115,11 @@ export const ButtonContainer = styled.section`
   grid-template-rows:repeat(4, 1fr);
   gap:14px 12px;
   margin-top:1rem;
+
+  @media (max-width:${420 / 16}rem) {
+    min-height:300px;
+    gap:12px 8px;
+  }
 `
 
 export const Button = styled(Flex)<Props>`
@@ -144,5 +149,10 @@ export const Button = styled(Flex)<Props>`
 
   &:hover {
     opacity:1;
+  }
+
+  @media (max-width:${ 420 / 16 }rem) {
+    max-width:100%;
+    height:47px;
   }
 `
