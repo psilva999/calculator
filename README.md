@@ -1,7 +1,7 @@
 # Calculator-app
  A simple calculator made with React and TypeScript
 
-Site: https://psilva999.github.io/calculator-app/
+Site: https://psilva999.github.io/calculator/
 
 ## Technologies
 
