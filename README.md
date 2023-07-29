@@ -1,5 +1,5 @@
-# Calculator-app
- A simple calculator made with React and TypeScript
+# Calculator app
+ A calculator app made with React and TypeScript
 
 Site: https://psilva999.github.io/calculator/
 
